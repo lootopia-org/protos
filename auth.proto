@@ -49,7 +49,6 @@ message LoginRequest {
     string password = 2;
     optional string totp_code = 3;
     optional string email_otp_code = 4;
-    optional string mfa_session_token = 5;
 }
 
 message LoginResponse {
