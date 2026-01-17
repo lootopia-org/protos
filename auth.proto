@@ -5,13 +5,13 @@ package authentication;
 service AuthenticationService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
-    rpc Logout(LogoutRequest) returns (LogoutResponse);
-    rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-    rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse);
+    rpc Logout() returns (LogoutResponse);
+    rpc RefreshToken() returns (RefreshTokenResponse);
+    rpc VerifyToken() returns (VerifyTokenResponse);
     
     rpc UpdateUserEmail(UpdateUserEmailRequest) returns (UpdateUserEmailResponse);
     rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
-    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+    rpc DeleteUser() returns (DeleteUserResponse);
     
     rpc SendEmailVerification(SendEmailVerificationRequest) returns (SendEmailVerificationResponse);
     rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
@@ -21,7 +21,7 @@ service AuthenticationService {
     
     rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse);
     rpc RemoveRole(RemoveRoleRequest) returns (RemoveRoleResponse);
-    rpc GetUserRoles(GetUserRolesRequest) returns (GetUserRolesResponse);
+    rpc GetUserRoles() returns (GetUserRolesResponse);
     
     rpc GetAuthFactors(GetAuthFactorsRequest) returns (GetAuthFactorsResponse);
     rpc UpdateAuthFactors(UpdateAuthFactorsRequest) returns (UpdateAuthFactorsResponse);
@@ -57,14 +57,12 @@ message LoginResponse {
     AuthTokens tokens = 3;
 }
 
-message LogoutRequest {}
 
 message LogoutResponse {
     bool success = 1;
     string message = 2;
 }
 
-message RefreshTokenRequest {}
 
 message RefreshTokenResponse {
     bool success = 1;
@@ -72,14 +70,15 @@ message RefreshTokenResponse {
     AuthTokens tokens = 3;
 }
 
-message VerifyTokenRequest {}
 
 message VerifyTokenResponse {
     bool valid = 1;
     string message = 2;
 }
 
-message UpdateUserEmailRequest {}
+message UpdateUserEmailRequest {
+    string new_email = 1;
+  }
 
 message UpdateUserEmailResponse {
     bool success = 1;
@@ -96,7 +95,6 @@ message ChangePasswordResponse {
     string message = 2;
 }
 
-message DeleteUserRequest {}
 
 message DeleteUserResponse {
     bool success = 1;
@@ -150,7 +148,6 @@ message RemoveRoleResponse {
     string message = 2;
 }
 
-message GetUserRolesRequest {}
 
 message GetUserRolesResponse {
     bool success = 1;
