@@ -14,7 +14,7 @@ service AuthenticationService {
 
     rpc UpdateUserEmail(UpdateUserEmailRequest) returns (UpdateUserEmailResponse);
     rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
-    rpc DeleteUser(mpty) returns (DeleteUserResponse);
+    rpc DeleteUser(Empty) returns (DeleteUserResponse);
 
     rpc SendEmailVerification(SendEmailVerificationRequest) returns (SendEmailVerificationResponse);
     rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
