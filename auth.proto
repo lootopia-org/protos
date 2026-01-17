@@ -8,13 +8,13 @@ service AuthenticationService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
 
-    rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
-    rpc RefreshToken(google.protobuf.Empty) returns (RefreshTokenResponse);
-    rpc VerifyToken(google.protobuf.Empty) returns (VerifyTokenResponse);
+    rpc Logout(Empty) returns (LogoutResponse);
+    rpc RefreshToken(Empty) returns (RefreshTokenResponse);
+    rpc VerifyToken(Empty) returns (VerifyTokenResponse);
 
     rpc UpdateUserEmail(UpdateUserEmailRequest) returns (UpdateUserEmailResponse);
     rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
-    rpc DeleteUser(google.protobuf.Empty) returns (DeleteUserResponse);
+    rpc DeleteUser(mpty) returns (DeleteUserResponse);
 
     rpc SendEmailVerification(SendEmailVerificationRequest) returns (SendEmailVerificationResponse);
     rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
@@ -23,11 +23,13 @@ service AuthenticationService {
 
     rpc AssignRole(AssignRoleRequest) returns (AssignRoleResponse);
     rpc RemoveRole(RemoveRoleRequest) returns (RemoveRoleResponse);
-    rpc GetUserRoles(google.protobuf.Empty) returns (GetUserRolesResponse);
+    rpc GetUserRoles(Empty) returns (GetUserRolesResponse);
 
-    rpc GetAuthFactors(GetAuthFactorsRequest) returns (GetAuthFactorsResponse);
+    rpc GetAuthFactors(Empty) returns (GetAuthFactorsResponse);
     rpc UpdateAuthFactors(UpdateAuthFactorsRequest) returns (UpdateAuthFactorsResponse);
 }
+
+message Empty{}
 
 message AuthTokens {
     string access_token = 1;
@@ -150,8 +152,6 @@ message GetUserRolesResponse {
     string message = 2;
     repeated string roles = 3;
 }
-
-message GetAuthFactorsRequest {}
 
 message GetAuthFactorsResponse {
     bool success = 1;
